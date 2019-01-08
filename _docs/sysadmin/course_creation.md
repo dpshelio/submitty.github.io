@@ -106,7 +106,7 @@ order: 5
    sudo /usr/local/submitty/sbin/create_course.sh <SEMESTER> <COURSE> smithj <COURSE>_tas_www
    ```
 
-   This creates a course for the Fall 2016 semester, with course ID
+   This creates a course for the `<SEMESTER>` semester, with course ID
    `<COURSE>`, head instructor `smithj` and TA group
    `<COURSE>_tas_www`.
 

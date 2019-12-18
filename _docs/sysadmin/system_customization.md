@@ -14,7 +14,7 @@ administrators of a live Submitty installation._
 * [Configure log rotation](#configure-log-rotation)
 * [Set password policy](#set-password-policy)
 * [Secure SSH](#secure-ssh)
-* [Block some brute-force ssh connections](#block-some-brute-force-ssh-connections-by-typing-the-following-at-a-command-prompt)
+* [Block some brute-force ssh connections](#block-some-brute-force-ssh-connections)
 * [Disable PHP Functions](#disable-php-functions)
 * [Increasing the max number of files that can be uploaded at once](#increasing-the-max-number-of-files-that-can-be-uploaded-at-once
 )
@@ -131,7 +131,10 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr,arcfour256,arcfour128
 <small>[Back To Table of Contents](#table-of-contents)</small>
 
 
-### Block some brute-force ssh connections by typing the following at a command prompt:
+### Block some brute-force ssh connections
+
+Blocking some brute-force ssh connections can be done by typing the following at
+a command prompt as root:
 
 ```
 sudo bash

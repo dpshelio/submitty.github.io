@@ -185,7 +185,7 @@ order: 5
 1.  If desired, delete course directory:
 
     ```
-    rm /var/local/submitty/courses/<SEMESTER>/<COURSE>
+    rm -r /var/local/submitty/courses/<SEMESTER>/<COURSE>
     ```
 
     _Note: Course directory can remain, which is useful for archive or

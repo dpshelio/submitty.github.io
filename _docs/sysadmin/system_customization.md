@@ -137,24 +137,48 @@ Blocking some brute-force ssh connections can be done by typing the following at
 a command prompt as root:
 
 ```
-sudo bash
 iptables -I INPUT -p tcp --dport 22 -m state --state NEW -m recent --set
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 60 --hitcount 8 -j DROP
-iptables-save > /root/eth0.fw
-exit
 ```
 
-Edit `/etc/rc.local` to automatically reload the software
-firewall on boot and add the following just before the `exit 0`
-
-```
-/sbin/iptables-restore < /root/eth0.fw
-```
+To keep these changes persistently after reboot, you can either save the rules
+on a file and load it on boot or use a software that will manage that for you.
+Each explained on the sections below.
 
 Note: This method may not be appropriate or may need to be tuned
 if you normally expect a lot of ssh connections from a given host.
 You may also opt to whitelist addresses or networks that are
 allowed to connect more frequently.
+
+#### Manually
+
+Save the rules with:
+```
+iptables-save > /root/eth0.fw
+```
+
+Edit `/etc/rc.local` to automatically reload the firewall
+software on boot and add the following just before the `exit 0`
+
+```
+/sbin/iptables-restore < /root/eth0.fw
+```
+
+#### With `persistent` packages (only Ubuntu)
+
+Install the software
+
+```
+apt install iptables-persistent netfilter-persistent
+```
+
+The installer will ask you whether to save the current configuration.
+If you've changed then you can save it again by:
+
+```
+netfilter-persistent save # to save any new changes
+systemctl restart netfilter-persistent # to restart the service
+```
 
 <small>[Back To Table of Contents](#table-of-contents)</small>
 
